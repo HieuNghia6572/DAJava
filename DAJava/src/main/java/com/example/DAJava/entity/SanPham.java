@@ -1,5 +1,7 @@
 package com.example.DAJava.entity;
 
+import com.example.DAJava.validator.annotation.ValidTheLoaiId;
+import com.example.DAJava.validator.annotation.ValidUserId;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -13,6 +15,7 @@ import lombok.*;
 @Data
 @Entity
 @Table(name = "sanpham")
+//Dương Đức Tài
 public class SanPham {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +26,8 @@ public class SanPham {
     @Size(max = 50, min = 1, message = "Tên phải ít hơn 50 ký tự")
     private String ten;
 
+    private String ImgUrl;
+    private String mota;
 /*    @Column(name = "author")
     private String author;*/
 
@@ -30,7 +35,7 @@ public class SanPham {
     @NotNull(message = "Giá là bắt buộc")
     private Double gia;
 
-  /*  @ManyToOne
+    @ManyToOne
     @JoinColumn(name ="theloai_id")
     @ValidTheLoaiId
     private TheLoai theloai;
@@ -38,5 +43,5 @@ public class SanPham {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ValidUserId
-    private User user;*/
+    private User user;
 }
