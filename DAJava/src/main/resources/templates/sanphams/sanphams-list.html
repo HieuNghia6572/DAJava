@@ -13,9 +13,14 @@
 <body>
 <section layout:fragment="content">
     <h1>SanPham List</h1>
-
+    <div  sec:authorize="hasAnyAuthority('ADMIN')">
+        <a th:href="@{~/sanphams/add}" class="btn btn-primary">Create New Product</a>
+    </div>
+    <div   sec:authorize="hasAnyAuthority('ADMIN')">
+        <a th:href="@{/theloais/add}" class="btn btn-primary">Add New Category</a>
+    </div>
     <input type="text" id="searchInput" placeholder="Search by name">
-    <button onclick="searchSanphams()"class="btn btn-primary">Search</button>
+    <button onclick="searchSanphams()" class="btn btn-primary">Search</button>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
         <tr>
@@ -49,7 +54,7 @@
                     <input type="number" name="quantity" min="1" value="1"
                            class="form-control d-inline-block" style="width: 70px;">
                     <input type="hidden" th:value="${sanpham.id}"
-                           name="sanphamId"/>
+                           name="productId"/>
                     <button type="submit" class="btn btn-warning btn-sm">Add to
                         Cart</button>
                 </form>

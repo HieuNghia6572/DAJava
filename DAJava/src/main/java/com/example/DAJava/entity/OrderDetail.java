@@ -5,23 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
 @Setter
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "chitiet_donhang")
-public class ChiTietDonHang {
+@Table(name = "order_details")
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int soluong;
+    private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "sanpham_id")
-    private SanPham sanpham;
+    @JoinColumn(name = "product_id")
+    private SanPham product;
     @ManyToOne
-    @JoinColumn(name = "donhang_id")
-    private DonHang donhang;
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

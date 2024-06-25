@@ -1,19 +1,15 @@
 package com.example.DAJava.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import java.util.List;
 @Setter
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "donhang")
-public class DonHang {
+@Table(name = "orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,6 +17,6 @@ public class DonHang {
     private String customerAddress;
     private String CustomerPhone;
     private String CustomerNote;
-    @OneToMany(mappedBy = "donhang")
-    private List<ChiTietDonHang> ctDonhang;
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetail> orderDetails;
 }
