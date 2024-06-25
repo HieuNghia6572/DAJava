@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+          background-color: #f8f9fa; /* Light gray background */
+          background-image: url('https://th.bing.com/th/id/R.0b343722dca914ece97e8fc3c80e5172?rik=MR2G2XI3ossLng&pid=ImgRaw&r=0'); /* URL của hình nền */
+          background-size: cover; /* Đảm bảo hình nền sẽ được hiển thị đầy đủ kích thước */
+
+        }
+        .login-container {
+          max-width: 400px;
+          margin: auto;
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+          margin-top: 50px;
+        }
+        .login-title {
+          text-align: center;
+          margin-bottom: 30px;
+          color: #007bff; /* Blue title */
+        }
+        .form-action {
+          text-align: center;
+        }
+        .register-link {
+          text-align: center;
+        }
+        .btn-primary {
+          background-color: #007bff; /* Blue button */
+          border-color: #007bff; /* Blue border */
+        }
+        .btn-primary:hover {
+          background-color: #0056b3; /* Darker blue on hover */
+          border-color: #0056b3; /* Darker blue border on hover */
+        }
+        .alert-danger {
+          background-color: #f8d7da; /* Light red for error message */
+          border-color: #f5c6cb; /* Light red border */
+          color: #721c24; /* Dark red text */
+        }
+        .alert-success {
+          background-color: #d4edda; /* Light green for success message */
+          border-color: #c3e6cb; /* Light green border */
+          color: #155724; /* Dark green text */
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content" class="container mt-5">
+    <div class="login-container">
+        <h1 class="login-title">Login</h1>
+        <form th:action="@{/login}" method="post">
+            <div th:if="${param.error}" class="alert alert-danger">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out.
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" required id="username"
+                       name="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" required id="password"
+                       name="password" placeholder="Password">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name="remember-me"
+                       id="remember-me">
+                <label class="form-check-label" for="remember-me"> Remember me</label>
+            </div>
+            <div class="form-action">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                <p class="mt-3 mb-0 register-link">Don't have an account? <a class="text-info" th:href="@{/register}">Sign up?</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
