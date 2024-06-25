@@ -36,10 +36,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/", "/oauth/**", "/register", "/error",
-                                "/products", "/cart", "/cart/**")
+                        .requestMatchers("/css/**","/fonts/**","images/**","vendor/**", "/js/**", "/", "/oauth/**", "/register", "/error",
+                                "/sanphams", "/cart", "/cart/**")
                         .permitAll() // Cho phép truy cập không cần xác thực.
-                        .requestMatchers("/nhanvien/edit/**", "/nhanvien/add", "/nhanvien/delete")
+                        .requestMatchers("/sanphams/edit/**", "/sanphams/add", "/sanphams/delete")
                         .hasAnyAuthority("ADMIN") // Chỉ cho phép ADMIN truy cập.
                         .requestMatchers("/api/**")
                         .permitAll() // API mở cho mọi người dùng.
@@ -56,7 +56,7 @@ public class SecurityConfig {
                 formLogin(formLogin -> formLogin
                         .loginPage("/login") // Trang đăng nhập.
                         .loginProcessingUrl("/login") // URL xử lý đăng nhập.
-                        .defaultSuccessUrl("/nhanvien",true) // Trang sau đăng nhập thành công.
+                        .defaultSuccessUrl("/sanphams",true) // Trang sau đăng nhập thành công.
                         .failureUrl("/login?error") // Trang đăng nhập thất bại.
                         .permitAll()
                 ) .

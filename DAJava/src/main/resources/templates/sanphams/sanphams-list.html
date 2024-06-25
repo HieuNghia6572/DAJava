@@ -40,10 +40,8 @@
             <td th:text="${sanpham.theloai.ten}"></td>
             <td>
                 <div sec:authorize="hasAuthority('ADMIN')">
-                    <a th:href="@{/sanphams/edit/{id}(id=${sanpham.id})}" class="btn
-btn-success btn-sm">Edit</a>
-                    <a th:href="@{/sanphams/delete/{id}(id=${sanpham.id})}" class="btn
-btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a th:href="@{/sanphams/edit/{id}(id=${sanpham.id})}" class="btn btn-success btn-sm">Edit</a>
+                    <a th:href="@{/sanphams/delete/{id}(id=${sanpham.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                 </div>
             </td>
             <td>
