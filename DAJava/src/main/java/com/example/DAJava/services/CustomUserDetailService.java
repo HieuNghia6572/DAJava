@@ -1,4 +1,24 @@
 package com.example.DAJava.services;
 
-public class CustomUserDetailService {
+import com.example.DAJava.entity.CustomUserDetail;
+import com.example.DAJava.entity.User;
+import com.example.DAJava.repository.IUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomUserDetailService  /*implements UserDetailsService*/ {
+    /*@Autowired
+    private IUserRepository userRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+        if(user == null)
+            throw new UsernameNotFoundException("User not found");
+        return new CustomUserDetail(user,userRepository);
+    }*/
 }

@@ -14,8 +14,7 @@
     <form th:action="@{/sanphams/add}" th:object="${sanpham}" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="ten" class="form-label">TenSanPham:</label>
-            <input type="text" th:field="*{ten}" class="form-control" id="ten"
-                   required>
+            <input type="text" th:field="*{ten}" class="form-control" id="ten" required>
             <div class="text-danger" th:if="${#fields.hasErrors('ten')}"
                  th:errors="*{ten}"></div>
         </div>
