@@ -19,7 +19,8 @@ public class CartController {
     @PostMapping("/add")
     public String addToCart(@RequestParam Long productId, @RequestParam int
             quantity) {
-        cartService.addToCart(productId, quantity);return "redirect:/cart";
+        cartService.addToCart(productId, quantity);
+        return "redirect:/cart";
     }
     @GetMapping("/remove/{productId}")
     public String removeFromCart(@PathVariable Long productId) {
