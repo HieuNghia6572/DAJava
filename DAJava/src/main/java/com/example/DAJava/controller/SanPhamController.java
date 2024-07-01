@@ -85,6 +85,14 @@ public class SanPhamController {
             sanPham.setId(id); // set id to keep it in the form in case of errors
             return "/sanphams/update-sanpham";
         }
+        if (!imageFile.isEmpty()) {
+            try {
+                String imageName = saveImage(imageFile);
+                sanPham.setImgUrl("/images/" +imageName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         sanPhamService.updateSanPham(sanPham);
         return "redirect:/sanphams";
     }
