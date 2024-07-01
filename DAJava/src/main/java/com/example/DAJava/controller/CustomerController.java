@@ -37,14 +37,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
             return "/customers/contact";
         }
         //TD Detail
-        @GetMapping("/details/{id}")
-        public String Detail(@PathVariable Long id, Model model)
+        @GetMapping("/details")
+        public String Detail(Model model){
+            model.addAttribute("sanphams",sanPhamService.getAllSanPham());
+            return "customers/product-detail";
+        }
+        /*public String Detail(@PathVariable Long id, Model model)
         {
             SanPham sanPham = sanPhamService.getSanPhamById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Invalid product ID: " + id));
             model.addAttribute("sanpham", sanPham);
             return "customers/product-detail";
-        }
+        }*/
         @GetMapping("/blog")
         public String Blog(Model model) {
             model.addAttribute("sanphams", sanPhamService.getAllSanPham());
