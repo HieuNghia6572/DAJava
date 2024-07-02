@@ -249,29 +249,34 @@
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						Tất cả sản phẩm
 					</button>
-
-
 				</div>
-
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Tìm Kiếm
+				<div class="row" style="display: flex;
+                       justify-content: center;
+                       margin-bottom: 20px;">
+					<label for="searchInput" style="font-size: 16px;
+                                   font-weight: bold;
+                                   margin-right: 10px;
+                                   align-self: center;">Tìm kiếm sản phẩm:</label>
+					<div class="col-12" style="max-width: 500px;
+                              width: 100%;">
+						<input style="height: 40px;
+                      font-size: 16px;
+                      padding: 0 15px;
+                      border-radius: 20px;
+                      border: 1px solid #ccc;
+                      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                      transition: border-color 0.3s, box-shadow 0.3s;
+                      outline: none;
+                      border-color: #007bff;
+                      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);"
+							   type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm sản phẩm...">
 					</div>
 				</div>
-				
-				<!-- Search product -->
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>	
+				<!-- Filter -->
+				<div class="dis-none panel-filter w-full p-t-10">
+
 				</div>
-
 			</div>
 
 			<div class="row isotope-grid">
@@ -306,7 +311,32 @@
 						</div>
 					</div>
 				</div>
-		</div>
+				<script>
+					const searchInput = document.getElementById('searchInput');
+                    const isotopeGrid = document.querySelector('.isotope-grid');
+                    const productItems = document.querySelectorAll('.isotope-item');
+
+                    searchInput.addEventListener('input', function() {
+                      const searchTerm = this.value.toLowerCase();
+
+                      productItems.forEach(function(item) {
+                        const productName = item.querySelector('.js-name-b2').textContent.toLowerCase();
+                        const productCategory = item.querySelector('.stext-104.cl4').textContent.toLowerCase();
+                        const productsName = item.querySelector('.stext-105.cl1').textContent.toLowerCase();
+
+                        if (productName.includes(searchTerm) || productCategory.includes(searchTerm) || productsName.includes(searchTerm)) {
+                          item.style.display = 'block';
+                        } else {
+                          item.style.display = 'none';
+                        }
+                      });
+
+                      // Cập nhật lại layout của Isotope
+                      isotopeGrid.isotope();
+                    });
+				</script>
+
+
 	</div>
 		
 
