@@ -31,11 +31,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
             model.addAttribute("sanphams", sanPhamService.getAllSanPham());
             return "/customers/about";
         }
-        @GetMapping("/contact")
+      /*  @GetMapping("/contact")
         public String Contact(Model model) {
             model.addAttribute("sanphams", sanPhamService.getAllSanPham());
             return "/customers/contact";
-        }
+        }*/
         //TD Detail
         @GetMapping("/details/{id}")
         public String Detail(@PathVariable Long id, Model model)
@@ -45,11 +45,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
             model.addAttribute("sanpham", sanPham);
             return "customers/product-detail";
         }
-        @GetMapping("/blog")
+      /*  @GetMapping("/blog")
         public String Blog(Model model) {
             model.addAttribute("sanphams", sanPhamService.getAllSanPham());
             return "/customers/blog";
-        }
+        }*/
         @GetMapping("/product")
         public String ViewProduct(Model model) {
             model.addAttribute("sanphams", sanPhamService.getAllSanPham());

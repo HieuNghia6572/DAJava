@@ -43,6 +43,10 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
+						<a class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center" sec:authorize="hasAnyAuthority('ADMIN')">
+							<a class="flex-c-m navbar-text text-white me-3 p-lr-25" style="text-light" aria-current="page" href="/sanphams">admin dashboard</a>
+
+						</a>
 						<a sec:authentication="name" class="flex-c-m navbar-text text-white me-3 p-lr-25" style="text-light">
 						</a>
 						<a class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">

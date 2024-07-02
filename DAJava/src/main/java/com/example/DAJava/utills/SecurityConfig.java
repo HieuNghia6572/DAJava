@@ -35,15 +35,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
         return http
+                .csrf(p -> p.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/images/**", "/fonts/**", "/vendor/**", "/css/**", "/", "/oauth/**", "/register", "/error","/customers",
-                                "/sanphams", "/cart", "/cart/**")
-                        .permitAll() // Cho phép truy cập không cần xác thực.
+                        .requestMatchers("/images/**", "/fonts/**", "/vendor/**", "/css/**", "/", "/oauth/**", "/register", "/error", "/customers",
+                                "/sanphams", "/cart", "/cart/**","/order/checkout", "sanphams/details/**")
+                        .permitAll()
                         .requestMatchers("/sanphams/edit/**", "/sanphams/add", "/sanphams/delete")
-                        .hasAnyAuthority("ADMIN") // Chỉ cho phép ADMIN truy cập.
+                        .hasAnyAuthority("ADMIN")
                         .requestMatchers("/api/**")
-                        .permitAll() // API mở cho mọi người dùng.
-                        .anyRequest().authenticated() // Bất kỳ yêu cầu nào khác cần xác thực.
+                        .permitAll()
+                        .anyRequest().authenticated()
                 ) .
                 logout(logout -> logout
                         .logoutUrl("/logout")

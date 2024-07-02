@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DAJava/DAJava.iml" filepath="$PROJECT_DIR$/DAJava/DAJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DAJava2.iml" filepath="$PROJECT_DIR$/.idea/DAJava2.iml" />
     </modules>
   </component>
