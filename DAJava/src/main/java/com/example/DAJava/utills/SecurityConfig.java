@@ -36,7 +36,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**","/fonts/**","images/**","vendor/**", "/js/**", "/", "/oauth/**", "/register", "/error","/customers",
+                        .requestMatchers("/images/**", "/fonts/**", "/vendor/**", "/css/**", "/", "/oauth/**", "/register", "/error","/customers",
                                 "/sanphams", "/cart", "/cart/**")
                         .permitAll() // Cho phép truy cập không cần xác thực.
                         .requestMatchers("/sanphams/edit/**", "/sanphams/add", "/sanphams/delete")
@@ -56,7 +56,7 @@ public class SecurityConfig {
                 formLogin(formLogin -> formLogin
                         .loginPage("/login") // Trang đăng nhập.
                         .loginProcessingUrl("/login") // URL xử lý đăng nhập.
-                        .defaultSuccessUrl("/sanphams",true) // Trang sau đăng nhập thành công.
+                        .defaultSuccessUrl("/home",true) // Trang sau đăng nhập thành công.
                         .failureUrl("/login?error") // Trang đăng nhập thất bại.
                         .permitAll()
                 ) .
