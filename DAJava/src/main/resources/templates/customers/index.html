@@ -351,11 +351,11 @@
 				</button>
 
 
-				<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+				<!--<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 					<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 					<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 					Search
-				</div>
+				</div>-->
 			</div>
 
 			<!-- Search product -->
@@ -375,27 +375,51 @@
 			</div>
 		</div>
 
+		<div class="row" style="display: flex;
+                       justify-content: center;
+                       margin-bottom: 20px;">
+			<label for="searchInput" style="font-size: 16px;
+                                   font-weight: bold;
+                                   margin-right: 10px;
+                                   align-self: center;">Tìm kiếm sản phẩm:</label>
+			<div class="col-12" style="max-width: 500px;
+                              width: 100%;">
+				<input style="height: 40px;
+                      font-size: 16px;
+                      padding: 0 15px;
+                      border-radius: 20px;
+                      border: 1px solid #ccc;
+                      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                      transition: border-color 0.3s, box-shadow 0.3s;
+                      outline: none;
+                      border-color: #007bff;
+                      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);"
+					   type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+			</div>
+		</div>
+
 		<div class="row isotope-grid">
 
 			<div th:each="sanpham : ${sanphams}" class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 				<!-- Block2 -->
+
 				<div class="block2">
 					<div class="block2-pic hov-img0">
-						<img th:src="${sanpham.ImgUrl}" alt="IMG-PRODUCT">
+						<img style="width: 250px;height:300px" th:src="${sanpham.ImgUrl}" alt="IMG-PRODUCT">
 						<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 							Quick View
 						</a>
 					</div>
 
-					<div class="block2-txt flex-w flex-t p-t-14">
+					<div  class="block2-txt flex-w flex-t p-t-14">
 						<div class="block2-txt-child1 flex-col-l ">
-							<a href="product-detail.html"  th:text="${sanpham.theloai.ten}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-
+							<a style="display: block; text-align: center; width: 100%;" href="product-detail.html" th:text="${sanpham.theloai.ten}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+							</a>
+							<a style="display: block; text-align: center; width: 100%;" href="product-detail.html" th:text="${sanpham.ten}" class="stext-105 cl1 hov-cl1 trans-04 js-name-b2 p-b-6">
 							</a>
 
-							<span th:text="${sanpham.gia}" class="stext-105 cl3">
+							<span style="display: block; text-align: center; width: 100%;" th:text="${sanpham.gia}" class="stext-105 cl3"></span>
 
-								</span>
 						</div>
 
 						<div class="block2-txt-child2 flex-r p-t-3">
@@ -408,6 +432,30 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			const searchInput = document.getElementById('searchInput');
+            const isotopeGrid = document.querySelector('.isotope-grid');
+            const productItems = document.querySelectorAll('.isotope-item');
+
+            searchInput.addEventListener('input', function() {
+              const searchTerm = this.value.toLowerCase();
+
+              productItems.forEach(function(item) {
+                const productName = item.querySelector('.js-name-b2').textContent.toLowerCase();
+                const productCategory = item.querySelector('.stext-104.cl4').textContent.toLowerCase();
+                const productsName = item.querySelector('.stext-105.cl1').textContent.toLowerCase();
+
+                if (productName.includes(searchTerm) || productCategory.includes(searchTerm) || productsName.includes(searchTerm)) {
+                  item.style.display = 'block';
+                } else {
+                  item.style.display = 'none';
+                }
+              });
+
+              // Cập nhật lại layout của Isotope
+              isotopeGrid.isotope();
+            });
+		</script>
 
 		<!-- Load more -->
 		<div class="flex-c-m flex-w w-full p-t-45">
