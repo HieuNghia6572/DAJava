@@ -39,7 +39,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -52,7 +52,7 @@
 						<a class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 							<li class="nav-item d-flex align-items-center" sec:authorize="isAuthenticated()">
       <span class="navbar-text text-white me-3"><span><form th:action="@{/logout}" method="post">
-        <button class="btn btn-outline-light" type="submit">Logout</button>
+        <button class="btn btn-outline-light" type="submit">Đăng Xuất</button>
       </form></span><span ></span></span>
 							</li>
 
@@ -62,7 +62,7 @@
                                </form>
                              </li>-->
 							<li class="nav-item" sec:authorize="!isAuthenticated()">
-								<a class="btn btn-outline-light" href="/login">Login</a>
+								<a class="btn btn-outline-light" href="/login">Đăng Nhập</a>
 							</li>
 						</a>
 					</div>
@@ -81,16 +81,16 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a th:href="@{/home}">Home</a>
+								<a th:href="@{/home}">Trang chủ</a>
 
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a th:href="@{product}">Shop</a>
+								<a th:href="@{product}">Cửa Hàng</a>
 							</li>
 
 							<li>
-								<a th:href="@{/cart}">Cart</a>
+								<a th:href="@{/cart}">Giỏ Hàng</a>
 							</li>
 
 						<!--	<li>
@@ -98,7 +98,7 @@
 							</li>-->
 
 							<li>
-								<a th:href="@{/about}">About</a>
+								<a th:href="@{/about}">Khác</a>
 							</li>
 
 							<!--<li>

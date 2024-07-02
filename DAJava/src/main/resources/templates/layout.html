@@ -20,16 +20,16 @@
 <body>
 <nav class="navbar bg-dark" data-bs-theme="dark">
     <div style="padding-left: 20px">
-        <a class="navbar-brand" th:href="@{/home}">Home</a>
-        <a sec:authorize="hasAnyAuthority('ADMIN')" class="navbar-brand" th:href="@{/sanphams}">Product</a>
+        <a class="navbar-brand" th:href="@{/home}"> Trang chủ</a>
+        <a sec:authorize="hasAnyAuthority('ADMIN')" class="navbar-brand" th:href="@{/sanphams}">Sản phẩm</a>
 
         <li  sec:authorize="hasAnyAuthority('ADMIN')">
-        <a class="navbar-brand" aria-current="page" href="/sanphams">List Product</a>
-        <a class="navbar-brand" aria-current="page" href="/theloais">List Category</a>
+        <a class="navbar-brand" aria-current="page" href="/sanphams">Danh sách sản phẩm</a>
+        <a class="navbar-brand" aria-current="page" href="/theloais">Danh sách thể loại</a>
         </li>
         <li  sec:authorize="hasAnyAuthority('ADMIN')">
-            <a class="navbar-brand" aria-current="page" href="/sanphams/add">Add Product</a>
-            <a class="navbar-brand" aria-current="page" href="/theloais/add">Add Category</a>
+            <a class="navbar-brand" aria-current="page" href="/sanphams/add">Thêm sản phẩm</a>
+            <a class="navbar-brand" aria-current="page" href="/theloais/add">Thêm thể loại</a>
         </li>
 
 
@@ -48,20 +48,20 @@
                 <input class="form-control flex-grow-1" type="search"
                        placeholder="Search" aria-label="Search" name="key">
                 <button class="btn btn-outline-success flex-grow-1"
-                        type="submit">Search</button>
+                        type="submit">Tìm kiếm</button>
             </form>
         </a>
     </div>
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
         <li class="nav-item d-flex align-items-center" sec:authorize="isAuthenticated()">
       <span class="navbar-text text-white me-3"><span><form th:action="@{/logout}" method="post">
-        <button class="btn btn-outline-light" type="submit">Logout</button>
+        <button class="btn btn-outline-light" type="submit">Đăng Xuất</button>
       </form></span><span sec:authentication="name"></span></span>
         </li>
 
 
         <li class="nav-item" sec:authorize="!isAuthenticated()">
-            <a class="btn btn-outline-light" href="/login">Login</a>
+            <a class="btn btn-outline-light" href="/login">Đăng Nhập</a>
         </li>
     </ul>
     <div class="container-fluid">

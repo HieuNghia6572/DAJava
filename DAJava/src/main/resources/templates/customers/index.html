@@ -46,7 +46,7 @@
 		<div class="top-bar">
 			<div class="content-topbar flex-sb-m h-full container">
 				<div class="left-top-bar">
-					Free shipping for standard order over $100
+
 				</div>
 
 
@@ -63,12 +63,12 @@
 				<a class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 						<li class="nav-item d-flex align-items-center" sec:authorize="isAuthenticated()">
       					<span class="navbar-text text-white me-3"><span><form th:action="@{/logout}" method="post">
-        				<button class="btn btn-outline-light" type="submit">Logout</button>
+        				<button class="btn btn-outline-light" type="submit">Đăng Xuất</button>
       					</form>
 						</span><span ></span></span>
 						</li>
 						<li class="nav-item" sec:authorize="!isAuthenticated()">
-							<a class="btn btn-outline-light" href="/login">Login</a>
+							<a class="btn btn-outline-light" href="/login">Đăng Nhập</a>
 						</li>
 						</a>
 				</div>
@@ -87,16 +87,16 @@
 				<div class="menu-desktop">
 					<ul class="main-menu">
 						<li>
-							<a th:href="@{/home}">Home</a>
+							<a th:href="@{/home}">Trang Chủ</a>
 
 						</li>
 
 						<li>
-							<a th:href="@{product}">Shop</a>
+							<a th:href="@{product}">Cửa Hàng</a>
 						</li>
 
 						<li class="label1" data-label1="hot">
-							<a th:href="@{/cart}">Cart</a>
+							<a th:href="@{/cart}">Giỏ Hàng</a>
 						</li>
 
 						<!--<li>
@@ -104,7 +104,7 @@
 						</li>-->
 
 						<li>
-							<a th:href="@{/about}">About</a>
+							<a th:href="@{/about}">Khác</a>
 						</li>
 
 						<!--<li>
@@ -200,7 +200,7 @@
 			</li>
 
 			<li>
-				<a href="product.html">Shop</a>
+				<a href="product.html">Cửa Hàng</a>
 			</li>
 
 			<li>
@@ -251,19 +251,19 @@
 					<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 						<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span style="color:red" class="ltext-101 cl2 respon2">
-									Women Collection 2018
+
 								</span>
 						</div>
 
 						<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 							<h2 style="color:red" class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-								NEW SEASON
+								ĐỒ DÙNG CHO TRẺ
 							</h2>
 						</div>
 
 						<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
 							<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-								Shop Now
+								Cửa Hàng
 							</a>
 						</div>
 					</div>
@@ -275,19 +275,19 @@
 					<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 						<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span style="color:blue" class="ltext-101 cl2 respon2">
-									Men New-Season
+
 								</span>
 						</div>
 
 						<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 							<h2 style="color:blue" class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-								Jackets & Coats
+								ĐỒ DÙNG CHO TRẺ
 							</h2>
 						</div>
 
 						<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
 							<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-								Shop Now
+								Cửa Hàng
 							</a>
 						</div>
 					</div>
@@ -299,19 +299,19 @@
 					<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 						<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span style="color:white" class="ltext-101 cl2 respon2">
-									Men Collection 2018
+
 								</span>
 						</div>
 
 						<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 							<h2 style="color:white" class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-								New arrivals
+								ĐỒ DÙNG CHO TRẺ
 							</h2>
 						</div>
 
 						<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
 							<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-								Shop Now
+								Cửa Hàng
 							</a>
 						</div>
 					</div>
@@ -330,14 +330,14 @@
 	<div class="container">
 		<div class="p-b-10">
 			<h3 class="ltext-103 cl5">
-				Product Overview
+				Tổng Quan Sản Phẩm
 			</h3>
 		</div>
 
 		<div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-					All Products
+					Tất Cả Sản Phẩm
 				</button>
 			</div>
 
@@ -395,8 +395,8 @@
 								   class="form-control d-inline-block" style="width: 70px;">
 							<input type="hidden" th:value="${sanpham.id}"
 								   name="productId"/>
-							<button  type="submit" class="btn btn-primary btn-sm">Add to
-								Cart</button>
+							<button  type="submit" class="btn btn-primary btn-sm">Thêm vào giỏ</button>
+
 						</form>
 					</div>
 
