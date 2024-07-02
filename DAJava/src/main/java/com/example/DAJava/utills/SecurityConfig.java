@@ -37,13 +37,10 @@ public class SecurityConfig {
         return http
                 .csrf(p -> p.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/images/**", "/fonts/**", "/vendor/**", "/css/**", "/", "/oauth/**", "/register", "/error", "/customers",
-                                "/sanphams", "/cart", "/cart/**","/order/checkout", "sanphams/details/**")
-                        .permitAll()
+                        .requestMatchers("/images/**", "/fonts/**", "/vendor/**", "/css/**", "/", "/oauth/**", "/register", "/error",
+                                "/sanphams", "/cart", "/cart/**","/order/checkout", "sanphams/details/**").permitAll()
                         .requestMatchers("/sanphams/edit/**", "/sanphams/add", "/sanphams/delete")
                         .hasAnyAuthority("ADMIN")
-                        .requestMatchers("/api/**")
-                        .permitAll()
                         .anyRequest().authenticated()
                 ) .
                 logout(logout -> logout

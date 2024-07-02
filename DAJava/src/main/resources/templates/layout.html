@@ -21,8 +21,6 @@
 <nav class="navbar bg-dark" data-bs-theme="dark">
     <div style="padding-left: 20px">
         <a class="navbar-brand" th:href="@{/home}"> Trang chủ</a>
-        <a sec:authorize="hasAnyAuthority('ADMIN')" class="navbar-brand" th:href="@{/sanphams}">Sản phẩm</a>
-
         <li  sec:authorize="hasAnyAuthority('ADMIN')">
         <a class="navbar-brand" aria-current="page" href="/sanphams">Danh sách sản phẩm</a>
         <a class="navbar-brand" aria-current="page" href="/theloais">Danh sách thể loại</a>
