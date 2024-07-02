@@ -5,12 +5,70 @@
 <head>
   <title>Register</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+              background-color: #f8f9fa; /* Light gray background */
+                background-image: url('images/bg4.jpg'); /* Đường dẫn tương đối đến tệp hình ảnh */
+                background-size: cover; /* Đảm bảo hình nền sẽ được hiển thị đầy đủ kích thước */
+
+        }
+    .register-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        margin-top: 50px;
+    }
+    .register-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #007bff; /* Blue title */
+        font-weight: bold;
+    }
+    .form-control {
+        border: 1px solid #ced4da; /* Gray border for inputs */
+        border-radius: 8px;
+        padding: 12px;
+        transition: border-color 0.3s ease;
+    }
+    .form-control:focus {
+        border-color: #007bff; /* Blue border on focus */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue shadow on focus */
+    }
+    .btn-primary {
+        background-color: #007bff; /* Blue button */
+        border-color: #007bff; /* Blue border */
+        border-radius: 8px;
+        padding: 12px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        border-color: #0056b3; /* Darker blue border on hover */
+    }
+    .login-link {
+        text-align: center;
+        margin-top: 15px;
+        color: #007bff; /* Blue link color */
+    }
+    .login-link a {
+        color: #007bff; /* Blue link color */
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
 <section layout:fragment="content" class="container mt-5" >
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10">
-      <h1 class="mb-4 text-center">Register</h1>
+  <div class="register-container">
+
+      <h1 class="register-title">Đăng ký</h1>
       <form th:action="@{/register}" method="post" id="registrationForm">
         <div th:if="${errors}" class="alert alert-danger" role="alert">
           <ul class="mb-0">
@@ -19,46 +77,46 @@
         </div>
         <div class="mb-4">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email của bạn">
         </div>
         <div class="mb-4">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+          <label for="username" class="form-label">Tên đăng nhập</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Nhập tên người dùng của bạn">
         </div>
         <div class="form-group mb-4">
-          <label for="password"></label>
+          <label for="password">Mật khẩu</label>
           <input type="password" class="form-control" id="password"
-                 name="password" placeholder="Enter your password">
+                 name="password" placeholder="Nhập mật khẩu của bạn">
           <!--<small id="passwordHelpBlock" class="form-text text-muted">
             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
           </small>-->
         </div>
         <div class="form-group mb-4">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
+          <label for="confirmPassword">Xác nhận mật khẩu</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu">
           <div class="invalid-feedback">
-            Passwords do not match.
+            Mất khẩu không hợp lệ.
           </div>
         </div>
         <div class="mb-4">
-          <label for="phone" class="form-label">Phone</label>
-          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone">
+          <label for="phone" class="form-label">Số điện thoại</label>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Nhập điện thoại của bạn">
         </div>
         <div class="mb-4">
-          <label for="address" class="form-label">Address</label>
-          <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address">
+          <label for="address" class="form-label">Địa chỉ</label>
+          <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
         </div>
         <div class="mb-4">
-          <label for="birthday" class="form-label">Birthday</label>
-          <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Enter your birthday">
+          <label for="birthday" class="form-label">Sinh nhật</label>
+          <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Nhập ngày sinh của bạn">
         </div>
         <div class="d-grid gap-2 form-action mb-3">
-          <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
+          <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
         </div>
-        <p class="text-center mb-0">Already have an account? <a class="text-info" th:href="${'/login'}">Login</a></p>
+          <p class="text-center mb-0">Bạn có sẵn tài khoản? <a class="text-info" th:href="${'/login'}">Đăng nhập</a></p>
       </form>
     </div>
-  </div>
+
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

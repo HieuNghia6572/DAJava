@@ -13,12 +13,7 @@
 <body>
 <section layout:fragment="content">
     <h1>Danh sách sản phẩm</h1>
-    <div  sec:authorize="hasAnyAuthority('ADMIN')">
-        <a th:href="@{~/sanphams/add}" class="btn btn-primary">Thêm sản phẩm mới</a>
-    </div>
-    <div   sec:authorize="hasAnyAuthority('ADMIN')">
-        <a th:href="@{/theloais/add}" class="btn btn-primary">Thêm thể loại mới</a>
-    </div>
+
     <input type="text" id="searchInput" placeholder="Search by name">
     <button onclick="searchSanphams()" class="btn btn-primary">Tìm kiếm</button>
     <table class="table table-bordered table-hover">
