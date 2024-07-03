@@ -24,16 +24,31 @@
                 <thead>
                 <tr>
                     <th>Sản Phẩm</th>
+                    <th>Đơn Giá</th>
                     <th>Số lượng</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="detail : ${order.orderDetails}">
                     <td th:text="${detail.product.ten}"></td>
+                    <td th:text="${detail.product.gia}"></td>
                     <td th:text="${detail.quantity}"></td>
                 </tr>
                 </tbody>
+
             </table>
+          <!--  <div class="flex-w flex-t bor12 p-b-13">
+                <div class="size-208">
+                <span class="stext-110 cl2">
+                    Tổng cộng:
+                </span>
+                </div>
+
+                <div class="size-209">
+                    <span class="mtext-110 cl2" id="totalPrice" th:text="${totalPrice}"></span>
+                </div>
+            </div>-->
+
             <a th:href="@{/order/list}" class="btn btn-primary">Back to Orders</a>
         </div>
     </div>

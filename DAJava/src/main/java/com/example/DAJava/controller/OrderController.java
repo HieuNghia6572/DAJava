@@ -57,7 +57,9 @@ public class OrderController {
     @GetMapping("/details/{id}")
     public String orderDetails(@PathVariable("id") Long orderId, Model model) {
         Order order = orderService.getOrderById(orderId);
+        model.addAttribute("totalPrice", cartService.getTotalPrice());
         model.addAttribute("order", order);
+
         return "order/details";
     }
 }
