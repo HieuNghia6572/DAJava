@@ -47,9 +47,9 @@
                     </a>
                     <a class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                         <li class="nav-item d-flex align-items-center" sec:authorize="isAuthenticated()">
-      <span class="navbar-text text-white me-3"><span><form th:action="@{/logout}" method="post">
-        <button class="btn btn-outline-light" type="submit">Đăng Xuất</button>
-      </form></span><span ></span></span>
+                          <span class="navbar-text text-white me-3"><span><form th:action="@{/logout}" method="post">
+                            <button class="btn btn-outline-light" type="submit">Đăng Xuất</button>
+                          </form></span><span ></span></span>
                         </li>
 
                         <!-- <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -343,7 +343,7 @@
                                 <th class="column-3">Giá</th>
                                 <th class="column-4">
                                     Số lượng</th>
-                                <th class="column-5">Tổng</th>
+                                <th class="column-5">Chức năng</th>
                             </tr>
 
                             <tr class="table_row">
@@ -367,7 +367,8 @@
                                            </a>
                                     </div>
                                 </td>
-                                <td class="column-5"></td>
+
+                                <td class="column-5"><a th:href="@{/cart/remove/{productId}(productId=${item.product.id})}" class="btn btndanger btn-sm">Xóa</a></td>
                             </tr>
 
                         </table>
@@ -389,9 +390,7 @@
                         </div>
 
                         <div class="size-209">
-								<span class="mtext-110 cl2">
-
-								</span>
+                            <span class="mtext-110 cl2" id="totalPrice" th:text="${totalPrice}"></span>
                         </div>
                     </div>
                 </div>

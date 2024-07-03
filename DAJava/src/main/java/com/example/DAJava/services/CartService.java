@@ -31,4 +31,17 @@ public class CartService {
     public void clearCart() {
         cartItems.clear();
     }
+    public void updateQuantity(Long productId, int quantity) {
+        for (CartItem item : cartItems) {
+            if (item.getProduct().getId().equals(productId)) {
+                item.setQuantity(quantity);
+                break;
+            }
+        }
+    }
+    public double getTotalPrice() {
+        return cartItems.stream()
+                .mapToDouble(item -> item.getProduct().getGia() * item.getQuantity())
+                .sum();
+    }
 }

@@ -17,7 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = ValidTheLoaiIdValidator.class)
 @Documented
 public @interface ValidTheLoaiId {
-    String message() default "ID Thể loại không hợp lệ ";
+    String message() default "Invalid Category ID";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

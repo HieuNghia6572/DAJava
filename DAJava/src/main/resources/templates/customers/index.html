@@ -46,12 +46,7 @@
 		<div class="top-bar">
 			<div class="content-topbar flex-sb-m h-full container">
 				<div class="left-top-bar">
-
 				</div>
-
-
-
-
 				<div class="right-top-bar flex-w h-full">
 					<a class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center" sec:authorize="hasAnyAuthority('ADMIN')">
 						<a class="flex-c-m navbar-text text-white me-3 p-lr-25" style="text-light" aria-current="page" href="/sanphams">admin dashboard</a>
@@ -383,51 +378,51 @@
 						<!--<a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 							Quick View
 						</a>-->
-					<div  class="block2-txt flex-w flex-t p-t-14">
-						<div class="block2-txt-child1 flex-col-l ">
-							<a style="display: block; text-align: center; width: 100%;" href="product-detail.html" th:text="${'Thể loại: '+sanpham.theloai.ten}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-							</a>
-							<a style="display: block; text-align: center; width: 100%;" href="product-detail.html" th:text="${'Tên: '+sanpham.ten}" class="stext-105 cl1 hov-cl1 trans-04 js-name-b2 p-b-6">
-							</a>
-							<span style="display: block; text-align: center; width: 100%;" th:text="${'Giá: '+ sanpham.gia}" class="stext-105 cl3"></span>
+						<div  class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a style="display: block; text-align: center; width: 100%;" href="product-detail.html" th:text="${'Thể loại: '+sanpham.theloai.ten}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								</a>
+								<a style="display: block; text-align: center; width: 100%;" href="product-detail.html" th:text="${'Tên: '+sanpham.ten}" class="stext-105 cl1 hov-cl1 trans-04 js-name-b2 p-b-6">
+								</a>
+								<span style="display: block; text-align: center; width: 100%;" th:text="${'Giá: '+ sanpham.gia}" class="stext-105 cl3"></span>
+							</div>
+							<form th:action="@{/cart/add}" method="post">
+								<input type="number" name="quantity" min="1" value="1"
+									   class="form-control d-inline-block" style="width: 70px;">
+								<input type="hidden" th:value="${sanpham.id}"
+									   name="productId"/>
+								<button  type="submit" class="btn btn-primary btn-sm">Thêm vào giỏ</button>
+
+							</form>
 						</div>
-						<form th:action="@{/cart/add}" method="post">
-							<input type="number" name="quantity" min="1" value="1"
-								   class="form-control d-inline-block" style="width: 70px;">
-							<input type="hidden" th:value="${sanpham.id}"
-								   name="productId"/>
-							<button  type="submit" class="btn btn-primary btn-sm">Thêm vào giỏ</button>
 
-						</form>
 					</div>
-
 				</div>
 			</div>
-		</div>
-		<script>
-			const searchInput = document.getElementById('searchInput');
-            const isotopeGrid = document.querySelector('.isotope-grid');
-            const productItems = document.querySelectorAll('.isotope-item');
+			<script>
+				const searchInput = document.getElementById('searchInput');
+				const isotopeGrid = document.querySelector('.isotope-grid');
+				const productItems = document.querySelectorAll('.isotope-item');
 
-            searchInput.addEventListener('input', function() {
-              const searchTerm = this.value.toLowerCase();
+				searchInput.addEventListener('input', function() {
+				  const searchTerm = this.value.toLowerCase();
 
-              productItems.forEach(function(item) {
-                const productName = item.querySelector('.js-name-b2').textContent.toLowerCase();
-                const productCategory = item.querySelector('.stext-104.cl4').textContent.toLowerCase();
-                const productsName = item.querySelector('.stext-105.cl1').textContent.toLowerCase();
+				  productItems.forEach(function(item) {
+					const productName = item.querySelector('.js-name-b2').textContent.toLowerCase();
+					const productCategory = item.querySelector('.stext-104.cl4').textContent.toLowerCase();
+					const productsName = item.querySelector('.stext-105.cl1').textContent.toLowerCase();
 
-                if (productName.includes(searchTerm) || productCategory.includes(searchTerm) || productsName.includes(searchTerm)) {
-                  item.style.display = 'block';
-                } else {
-                  item.style.display = 'none';
-                }
-              });
+					if (productName.includes(searchTerm) || productCategory.includes(searchTerm) || productsName.includes(searchTerm)) {
+					  item.style.display = 'block';
+					} else {
+					  item.style.display = 'none';
+					}
+				  });
 
-              // Cập nhật lại layout của Isotope
-              isotopeGrid.isotope();
-            });
-		</script>
+				  // Cập nhật lại layout của Isotope
+				  isotopeGrid.isotope();
+				});
+			</script>
 
 		<!-- Load more -->
 		<!--<div class="flex-c-m flex-w w-full p-t-45">

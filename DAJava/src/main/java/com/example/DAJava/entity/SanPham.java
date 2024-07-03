@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+
 import lombok.*;
 
 @Setter
@@ -28,8 +30,6 @@ public class SanPham {
 
     private String ImgUrl;
     private String mota;
-/*    @Column(name = "author")
-    private String author;*/
 
     @Column(name = "gia")
     @NotNull(message = "Giá là bắt buộc")

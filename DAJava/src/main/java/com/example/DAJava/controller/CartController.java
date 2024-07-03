@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/cart")
 public class CartController {
@@ -32,4 +35,19 @@ public class CartController {
         cartService.clearCart();
         return "redirect:/cart";
     }
+    @PostMapping("/update")
+    @ResponseBody
+    public Map<String, Double> updateQuantity(@RequestParam Long productId, @RequestParam int quantity) {
+        cartService.updateQuantity(productId, quantity);
+        double newPrice = cartService.getCartItems().stream()
+                .filter(item -> item.getProduct().getId().equals(productId))
+                .findFirst()
+                .map(item -> item.getProduct().getGia() * item.getQuantity())
+                .orElse(0.0);
+        Map<String, Double> response = new HashMap<>();
+        response.put("newPrice", newPrice);
+        response.put("totalPrice", cartService.getTotalPrice());
+        return response;
+    }
+
 }
