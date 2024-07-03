@@ -68,69 +68,69 @@
 <section layout:fragment="content" class="container mt-5" >
   <div class="register-container">
 
-      <h1 class="register-title">Đăng ký</h1>
-      <form th:action="@{/register}" method="post" id="registrationForm">
-        <div th:if="${errors}" class="alert alert-danger" role="alert">
-          <ul class="mb-0">
-            <li th:each="error : ${errors}" th:text="${error}" class="text-danger"></li>
-          </ul>
+    <h1 class="register-title">Đăng ký</h1>
+    <form th:action="@{/register}" method="post" id="registrationForm">
+      <div th:if="${errors}" class="alert alert-danger" role="alert">
+        <ul class="mb-0">
+          <li th:each="error : ${errors}" th:text="${error}" class="text-danger"></li>
+        </ul>
+      </div>
+      <div class="mb-4">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email của bạn">
+      </div>
+      <div class="mb-4">
+        <label for="username" class="form-label">Tên đăng nhập</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Nhập tên người dùng của bạn">
+      </div>
+      <div class="form-group mb-4">
+        <label for="password">Mật khẩu</label>
+        <input type="password" class="form-control" id="password"
+               name="password" placeholder="Nhập mật khẩu của bạn">
+        <!--<small id="passwordHelpBlock" class="form-text text-muted">
+          Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+        </small>-->
+      </div>
+      <div class="form-group mb-4">
+        <label for="confirmPassword">Xác nhận mật khẩu</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu">
+        <div class="invalid-feedback">
+          Mất khẩu không hợp lệ.
         </div>
-        <div class="mb-4">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email của bạn">
-        </div>
-        <div class="mb-4">
-          <label for="username" class="form-label">Tên đăng nhập</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Nhập tên người dùng của bạn">
-        </div>
-        <div class="form-group mb-4">
-          <label for="password">Mật khẩu</label>
-          <input type="password" class="form-control" id="password"
-                 name="password" placeholder="Nhập mật khẩu của bạn">
-          <!--<small id="passwordHelpBlock" class="form-text text-muted">
-            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-          </small>-->
-        </div>
-        <div class="form-group mb-4">
-          <label for="confirmPassword">Xác nhận mật khẩu</label>
-          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu">
-          <div class="invalid-feedback">
-            Mất khẩu không hợp lệ.
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="phone" class="form-label">Số điện thoại</label>
-          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Nhập điện thoại của bạn">
-        </div>
-        <div class="mb-4">
-          <label for="address" class="form-label">Địa chỉ</label>
-          <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
-        </div>
-        <div class="mb-4">
-          <label for="birthday" class="form-label">Sinh nhật</label>
-          <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Nhập ngày sinh của bạn">
-        </div>
-        <div class="d-grid gap-2 form-action mb-3">
-          <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
-        </div>
-          <p class="text-center mb-0">Bạn có sẵn tài khoản? <a class="text-info" th:href="${'/login'}">Đăng nhập</a></p>
-      </form>
-    </div>
+      </div>
+      <div class="mb-4">
+        <label for="phone" class="form-label">Số điện thoại</label>
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Nhập điện thoại của bạn">
+      </div>
+      <div class="mb-4">
+        <label for="address" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
+      </div>
+      <div class="mb-4">
+        <label for="birthday" class="form-label">Sinh nhật</label>
+        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Nhập ngày sinh của bạn">
+      </div>
+      <div class="d-grid gap-2 form-action mb-3">
+        <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
+      </div>
+      <p class="text-center mb-0">Bạn có sẵn tài khoản? <a class="text-info" th:href="${'/login'}">Đăng nhập</a></p>
+    </form>
+  </div>
 
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 <script>
-    document.getElementById("registrationForm").addEventListener("submit", function(event) {
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
+  document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
 
-        if (password !== confirmPassword) {
-            event.preventDefault();
-            document.getElementById("confirmPassword").classList.add("is-invalid");
-        } else {
-            document.getElementById("confirmPassword").classList.remove("is-invalid");
-        }
-    });
+      if (password !== confirmPassword) {
+          event.preventDefault();
+          document.getElementById("confirmPassword").classList.add("is-invalid");
+      } else {
+          document.getElementById("confirmPassword").classList.remove("is-invalid");
+      }
+  });
 </script>

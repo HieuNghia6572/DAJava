@@ -38,8 +38,8 @@ public class SecurityConfig {
                 .csrf(p -> p.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/images/**", "/fonts/**", "/vendor/**", "/css/**", "/", "/oauth/**", "/register", "/error",
-                                "/sanphams", "/cart", "/cart/**","/order/checkout", "sanphams/details/**").permitAll()
-                        .requestMatchers("/sanphams/edit/**", "/sanphams/add", "/sanphams/delete")
+                                "/sanphams", "/cart", "/cart/**","/order/checkout", "/sanphams/details/**").permitAll()
+                        .requestMatchers("/sanphams/edit/**", "/sanphams/add", "/sanphams/delete","/order/list","/order/details/**")
                         .hasAnyAuthority("ADMIN")
                         .anyRequest().authenticated()
                 ) .

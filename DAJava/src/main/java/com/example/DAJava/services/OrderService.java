@@ -42,4 +42,12 @@ public class OrderService {
         cartService.clearCart();
         return order;
     }
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    public Order getOrderById(Long orderId) {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new IllegalStateException("Order not found with id: " + orderId));
+    }
 }

@@ -3,6 +3,7 @@ package com.example.DAJava.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
+
 @Setter
 @Getter
 @RequiredArgsConstructor
@@ -15,8 +16,8 @@ public class Order {
     private Long id;
     private String customerName;
     private String customerAddress;
-    private String CustomerPhone;
-    private String CustomerNote;
-    @OneToMany(mappedBy = "order")
+    private String customerPhone;
+    private String customerNote;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetails;
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content" class="container my-5">
+    <h1>Order Details</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${order.id}">Order ID</h5>
+            <p class="card-text">
+                <strong>Tên người dùng:</strong> <span th:text="${order.customerName}"></span><br>
+                <strong>Địa chỉ người dùng:</strong> <span th:text="${order.customerAddress}"></span><br>
+                <strong>Số điện thoại:</strong> <span th:text="${order.customerPhone}"></span><br>
+                <strong>Ghi Chú:</strong> <span th:text="${order.customerNote}"></span><br>
+              <!--  <strong>Total Amount:</strong> <span th:text="${#numbers.formatDecimal(order.totalAmount, 0, 'COMMA', 2, 'POINT')}"></span>-->
+            </p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Sản Phẩm</th>
+                    <th>Số lượng</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="detail : ${order.orderDetails}">
+                    <td th:text="${detail.product.ten}"></td>
+                    <td th:text="${detail.quantity}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <a th:href="@{/order/list}" class="btn btn-primary">Back to Orders</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
