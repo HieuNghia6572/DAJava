@@ -1,5 +1,6 @@
 package com.example.DAJava.controller;
 
+import com.example.DAJava.entity.CartItem;
 import com.example.DAJava.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,16 @@ public class CartController {
         return "/cart/cart";
     }
     @PostMapping("/add")
-    public String addToCart(@RequestParam Long productId, @RequestParam int
-            quantity) {
-        cartService.addToCart(productId, quantity);
+    public String addToCart(@RequestParam Long productId, @RequestParam int quantity) {
+        CartItem existingItem = cartService.getCartItemByProductId(productId);
+        if (existingItem != null) {
+            // Sản phẩm đã có trong giỏ hàng, tăng số lượng
+            int newQuantity = existingItem.getQuantity() + quantity;
+            cartService.updateQuantity(productId, newQuantity);
+        } else {
+            // Sản phẩm chưa có trong giỏ hàng, thêm mới
+            cartService.addToCart(productId, quantity);
+        }
         return "redirect:/cart";
     }
     @GetMapping("/remove/{productId}")
@@ -40,14 +48,20 @@ public class CartController {
     @ResponseBody
     public Map<String, Double> updateQuantity(@RequestParam Long productId, @RequestParam int quantity) {
         cartService.updateQuantity(productId, quantity);
+
+        // Tính toán giá mới của sản phẩm
         double newPrice = cartService.getCartItems().stream()
                 .filter(item -> item.getProduct().getId().equals(productId))
                 .findFirst()
-                .map(item -> item.getProduct().getGia() * item.getQuantity())
+                .map(item -> item.getProduct().getGia() * quantity)
                 .orElse(0.0);
+
+        // Tính toán tổng giá trị giỏ hàng
+        double totalPrice = cartService.getTotalPrice();
+
         Map<String, Double> response = new HashMap<>();
         response.put("newPrice", newPrice);
-        response.put("totalPrice", cartService.getTotalPrice());
+        response.put("totalPrice", totalPrice);
         return response;
     }
 

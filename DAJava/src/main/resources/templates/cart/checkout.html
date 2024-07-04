@@ -27,7 +27,10 @@
       <label for="customerNote" class="form-label">Note:</label>
       <input type="text" id="customerNote" name="customerNote" class="form-control">
     </div>
-
+    <div class="mb-3">
+      <label for="totalPrice" class="form-label">Total Price:</label>
+      <input type="text" id="totalPrice" name="totalPrice" class="form-control" th:value="${#numbers.formatDecimal(totalPrice, 0, 'COMMA', 2, 'POINT')}" readonly>
+    </div>
     <button type="submit" class="btn btn-primary">Submit Order</button>
   </form>
 </section>

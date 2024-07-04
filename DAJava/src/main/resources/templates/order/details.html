@@ -24,30 +24,22 @@
                 <thead>
                 <tr>
                     <th>Sản Phẩm</th>
-                    <th>Đơn Giá</th>
+                    <th>Giá tiền sản phẩm</th>
                     <th>Số lượng</th>
+                    <th>Tổng tiền của sản phẩm</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="detail : ${order.orderDetails}">
+                <tr th:each="detail : ${order.orderDetails}" class="order-item">
                     <td th:text="${detail.product.ten}"></td>
-                    <td th:text="${detail.product.gia}"></td>
+                    <td th:text="${#numbers.formatDecimal(detail.product.gia, 0, 'COMMA', 2, 'POINT')}"></td>
                     <td th:text="${detail.quantity}"></td>
+                    <td th:text="${#numbers.formatDecimal(detail.product.gia * detail.quantity, 0, 'COMMA', 2, 'POINT')}"></td>
                 </tr>
                 </tbody>
 
             </table>
-          <!--  <div class="flex-w flex-t bor12 p-b-13">
-                <div class="size-208">
-                <span class="stext-110 cl2">
-                    Tổng cộng:
-                </span>
-                </div>
 
-                <div class="size-209">
-                    <span class="mtext-110 cl2" id="totalPrice" th:text="${totalPrice}"></span>
-                </div>
-            </div>-->
 
             <a th:href="@{/order/list}" class="btn btn-primary">Back to Orders</a>
         </div>
@@ -55,3 +47,25 @@
 </div>
 </body>
 </html>
+<script>
+    // Tính tổng số tiền của đơn hàng
+    function calculateTotalAmount() {
+        let totalAmount = 0;
+        const orderItems = document.querySelectorAll('.order-item');
+        orderItems.forEach(item => {
+            const price = parseFloat(item.querySelector('td:nth-child(2)').textContent.replace(/,/g, ''));
+            const quantity = parseInt(item.querySelector('td:nth-child(3)').textContent);
+            totalAmount += price * quantity;
+        });
+        return totalAmount;
+    }
+
+    // Hiển thị tổng số tiền của đơn hàng
+    const totalAmountElement = document.createElement('tr');
+    totalAmountElement.innerHTML = `
+        <td colspan="3"><strong>Tổng tiền:</strong></td>
+        <td><span id="total-amount">${#numbers.formatDecimal(calculateTotalAmount(), 0, 'COMMA', 2, 'POINT')}</span></td>
+    `;
+    const tbody = document.querySelector('tbody');
+    tbody.appendChild(totalAmountElement);
+</script>

@@ -341,7 +341,7 @@
                                 <th class="column-1">Sản phẩm</th>
                                 <th class="column-2"></th>
                                 <th class="column-3">Giá</th>
-                                <th class="column-4">
+                                <th class="column-4" style="text-align:left;">
                                     Số lượng</th>
                                 <th class="column-5">Chức năng</th>
                             </tr>
@@ -357,14 +357,14 @@
                                 <td th:text="${item.product.ten}" class="column-2"></td>
                                 <td th:text="${item.product.gia}" class="column-3"></td>
                                 <td class="column-4">
-                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                          <a  style="min-width: 26px" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                    <div >
+                                        <!--  <a  style="min-width: 26px" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                               <i class="fs-16 zmdi zmdi-minus"></i>
-                                          </a>
+                                          </a>-->
                                         <input type="number" id="quantity"  name="quantity" min="1"  th:value="${item.quantity}" class="mtext-104 cl3 txt-center num-product">
-                                           <a  style="min-width: 26px" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                       <!--    <a  style="min-width: 26px" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                <i class="fs-16 zmdi zmdi-plus"></i>
-                                           </a>
+                                           </a>-->
                                     </div>
                                 </td>
 
